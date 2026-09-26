@@ -21,20 +21,38 @@ PM Co-pilot uses RAG (Retrieval-Augmented Generation) to learn your writing styl
 ## Setup
 
 1. Clone this repo
+
 2. Create a virtual environment:
+
+   Windows:
    ```
    python -m venv venv
    venv\Scripts\activate
    ```
+   macOS / Linux:
+   ```
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
 3. Install dependencies:
    ```
    pip install -r requirements.txt
    ```
+
 4. Copy `.env.example` to `.env` and add your API keys:
+
+   Windows:
    ```
    copy .env.example .env
    ```
+   macOS / Linux:
+   ```
+   cp .env.example .env
+   ```
+
 5. Add reference PRDs to `reference_docs/` and past tickets to `reference_tickets/`
+
 6. Ingest your reference docs:
    ```
    python -m copilot ingest
