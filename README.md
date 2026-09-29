@@ -80,7 +80,7 @@ python -m copilot tickets credit-limit-prd.md
 python -m copilot tickets credit-limit-prd.md --target jira
 
 # Generate an Excalidraw architecture diagram
-python -m copilot diagram "credit limit and QuickBooks sync flow" -o credit-flow.excalidraw
+python -m copilot diagram "credit limit and accounting system sync flow" -o credit-flow.excalidraw
 
 # Generate a UI prototype from a PRD (spec + clickable HTML)
 python -m copilot prototype --from credit-limit-prd.md -o prototype/
@@ -115,11 +115,11 @@ tests/
 
 ## Design decisions
 
-- **RAG over fine-tuning** — Works with 2–3 reference docs; no training cost or hundreds of examples required
-- **Opt-in eval** — Every eval is an API call; default stays cheap and fast; users score when they want a quality gate
-- **Adaptive style matching** — The system prompt reverse-engineers patterns from whatever references you provide, not hardcoded section names
-- **Lightweight integrations** — REST/GraphQL using API keys
-- **CLI first** — Validates the pipeline before investing in conversational UI or a web front-end
+- **RAG over fine-tuning:** Works with 2–3 reference docs; no training cost or hundreds of examples required
+- **Opt-in eval:** Every eval is an API call; default stays cheap and fast; users score when they want a quality gate
+- **Adaptive style matching:** The system prompt reverse-engineers patterns from whatever references you provide, not hardcoded section names
+- **Lightweight integrations:** REST/GraphQL using API keys
+- **CLI first:** Validates the pipeline before investing in conversational UI or a web front-end
 
 ## Roadmap
 
@@ -139,4 +139,4 @@ This is a CLI tool by design -- it validates the core AI pipeline with the least
 
 Vishal Prabhakar -- Senior Product Manager in B2B freight forwarding, building AI product tools.
 
-> **Disclaimer:** The sample documents in `reference_docs/` and `reference_prototypes/` are illustrative examples for demonstrating style-matching only. They use a fictional B2B freight context and contain no company-specific, confidential, or proprietary data; any cost figures are rough estimates, not actual vendor pricing.
+> **Disclaimer:** Two sample PRDs based on common freight forwarding patterns, fully anonymized. All company, vendor, and product names in this repo have been replaced with generic placeholders (e.g., "rate intelligence platform", "accounting system"). The reference documents in `reference_docs/` and `reference_prototypes/` are illustrative examples for demonstrating style-matching; any cost figures are rough estimates, not actual vendor pricing.

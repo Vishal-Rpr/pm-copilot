@@ -73,7 +73,7 @@ A single missing document or incorrect HS code can trigger:
 ### Stage 4: Main Carriage and Milestone Tracking
 
 **BOL hierarchy:**
-- **MBL (Master Bill of Lading)** — issued by ocean carrier (Maersk, MSC, CMA CGM) to the forwarder. Controls physical cargo release.
+- **MBL (Master Bill of Lading)** — issued by the ocean carrier (major shipping lines) to the forwarder. Controls physical cargo release.
 - **HBL (House Bill of Lading)** — issued by forwarder to the shipper (their client). Carrier does not see the HBL.
 - This two-layer structure enables consolidation — multiple shippers under one MBL.
 
@@ -86,7 +86,7 @@ A single missing document or incorrect HS code can trigger:
 6. Out for delivery
 7. Delivered / POD (Proof of Delivery)
 
-Tracking data comes from carrier APIs, AIS vessel data, or platforms like Project44 and FourKites. Modern systems trigger **exception-based alerts** when a shipment deviates from its expected timeline.
+Tracking data comes from carrier APIs, AIS vessel data, or third-party carrier tracking platforms. Modern systems trigger **exception-based alerts** when a shipment deviates from its expected timeline.
 
 ### Stage 5: Import Customs and Final Delivery
 
@@ -130,7 +130,7 @@ Available credit = Assigned credit limit - Customer credit exposure
 ```
 
 **Accounting system sync architecture:**
-- Direction: Accounting system (QuickBooks/Xero/SAP) is source of truth for payments; forwarding app is source of truth for shipment-linked charges
+- Direction: The accounting system is source of truth for payments; the forwarding app is source of truth for shipment-linked charges
 - Sync frequency: Scheduled polling (15-30 min) vs. webhooks. Polling is simpler; webhooks faster but harder to debug.
 - Failure handling: Failed syncs must be logged, retried, and surfaced in a reconciliation dashboard
 - Partial payments: Invoices can be partially paid; the system must track partial application
@@ -141,14 +141,14 @@ Available credit = Assigned credit limit - Customer credit exposure
 
 | System | Purpose | Examples | Data flow |
 |--------|---------|----------|-----------|
-| TMS | Core operational platform | CargoWise, Magaya, custom builds | Bidirectional hub |
-| Ocean carriers | Booking, tracking, BOL | Maersk, MSC, CMA CGM, Hapag-Lloyd | Booking out, tracking events in |
-| NVOCCs | Buy rates, consolidation | Shipco, Allseas, Vanguard | Rates in, booking requests out |
-| Rate intelligence | Market benchmarking | Xeneta, Freightos Baltic Index | Rate queries out, market data in |
-| Accounting | Invoicing, payments, credit | QuickBooks, Xero, SAP | Invoices out, payments in |
-| Carrier tracking | Real-time visibility | Project44, FourKites, INTTRA | Events in, status queries out |
-| Customs / compliance | Filing, classification | US CBP ABI, single-window systems | Filings out, clearance status in |
-| CRM | Client management | Salesforce, HubSpot | Client data bidirectional |
+| TMS | Core operational platform | Established TMS platforms or custom builds | Bidirectional hub |
+| Ocean carriers | Booking, tracking, BOL | Major global shipping lines | Booking out, tracking events in |
+| NVOCCs | Buy rates, consolidation | NVOCC consolidators | Rates in, booking requests out |
+| Rate intelligence | Market benchmarking | Rate intelligence platforms | Rate queries out, market data in |
+| Accounting | Invoicing, payments, credit | Accounting platforms (e.g., ERP or SMB accounting) | Invoices out, payments in |
+| Carrier tracking | Real-time visibility | Carrier tracking / visibility platforms | Events in, status queries out |
+| Customs / compliance | Filing, classification | Government customs systems (e.g., US CBP ABI) | Filings out, clearance status in |
+| CRM | Client management | Enterprise CRM platforms | Client data bidirectional |
 
 ---
 
